@@ -20,11 +20,10 @@ public class Practice {
         {
             return ones[n];
         }
-        int tensCount=0;
+        int tensCount=0,originalNum=n;
         while(n>0)
         {
-            int temp = n;
-            temp = n%10;
+            int temp = n%10;
             if(tensCount==0)
             {
                 number = " "+ ones[temp]+number.trim();
@@ -35,7 +34,14 @@ public class Practice {
             }
             if(tensCount==2)
             {
-                number = ones[temp]+ " hundred and " +number.trim();
+                if(originalNum%100==0)
+                {
+                    number = ones[temp]+ " hundred";
+                }
+                else {
+                    number = ones[temp]+ " hundred and " +number.trim();
+                }
+
             }
             if(tensCount==3)
             {
@@ -58,7 +64,7 @@ public class Practice {
 
 
     public static void main(String[] args) {
-        System.out.println(numToWords(66689));
+        System.out.println(numToWords(209));
 
     }
 }
