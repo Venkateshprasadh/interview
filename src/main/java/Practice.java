@@ -24,13 +24,34 @@ public class Practice {
         while(n>0)
         {
             int temp = n%10;
-            if(tensCount==0)
+            if(n>10 && n<=19)
+            {
+                number=number+" hundred and "+ ones[n];
+                n=n/10;
+
+            }
+            if(n%100<=19 && tensCount==0)
+            {
+                number=number+ones[n%100];
+
+
+
+
+            }
+            if(tensCount==0 && temp!=0 && n%100>=19)
             {
                 number = " "+ ones[temp]+number.trim();
             }
             if(tensCount==1)
             {
-                number = " "+ tees[temp]+number.trim();
+                if(temp==2)
+                {
+                    number = " "+ ones[temp*10]+number.trim();
+                }
+                else {
+                    number = " "+ tees[temp]+number.trim();
+
+                }
             }
             if(tensCount==2)
             {
@@ -38,7 +59,7 @@ public class Practice {
                 {
                     number = ones[temp]+ " hundred";
                 }
-                else {
+                else if(temp!=0) {
                     number = ones[temp]+ " hundred and " +number.trim();
                 }
 
