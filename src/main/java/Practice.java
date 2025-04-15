@@ -24,7 +24,7 @@ public class Practice {
         while(n>0)
         {
             int temp = n%10;
-            if(n>10 && n<=19)
+            if(n>10 && n<=19 && tensCount<2)
             {
                 number=number+" hundred and "+ ones[n];
                 n=n/10;
@@ -33,9 +33,6 @@ public class Practice {
             if(n%100<=19 && tensCount==0)
             {
                 number=number+ones[n%100];
-
-
-
 
             }
             if(tensCount==0 && temp!=0 && n%100>=19)
@@ -47,6 +44,11 @@ public class Practice {
                 if(temp==2)
                 {
                     number = " "+ ones[temp*10]+number.trim();
+                }
+                if(n%1000==0)
+                {
+                    number=ones[n/100]+" thousand "+number;
+                    break;
                 }
                 else {
                     number = " "+ tees[temp]+number.trim();
@@ -85,7 +87,7 @@ public class Practice {
 
 
     public static void main(String[] args) {
-        System.out.println(numToWords(209));
+        System.out.println(numToWords(1011).trim());
 
     }
 }
